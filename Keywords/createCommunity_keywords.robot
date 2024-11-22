@@ -13,11 +13,11 @@ Should show notifications page
     Element Should Be Visible    ${notiHeader}
 
 Tap on Community tab
-    Sleep    10s
     Wait Until Element Is Visible    ${communityTab} 
     Click Element    ${communityTab}
 
 Should Show Communities page
+    Wait Until Element Is Visible    ${addCommunityBtn}
     Element Should Be Visible    ${addCommunityBtn}
 
 Tap Add Community button
@@ -25,7 +25,8 @@ Tap Add Community button
     Click Element    ${addCommunityBtn}
 
 Should show Create Community page
-    Sleep    10s
+    Sleep    2s
+    Wait Until Element Is Visible    ${communityNameInput}
     Element Should Be Visible    ${communityNameInput}
 
 Fill in Community name field with "${commuName}"
@@ -38,13 +39,15 @@ Fill in community description with "${commuDesc}"
     Input Text    ${communityDesInput}    ${commuDesc}
     Click Element    ${communityDesInput}
     Input Text Into Current Element    ${commuDesc}
+    Sleep    2s
 
 Tap + Add Category button
     Wait Until Element Is Visible    ${addCatBtn}
     Click Element    ${addCatBtn}
 
 Should show Select Community Category page
-    Sleep    10s
+    Sleep   2s
+    Wait Until Element Is Visible    ${foodBtn}
     Element Should Be Visible    ${foodBtn}
 
 Select Food category
@@ -52,18 +55,21 @@ Select Food category
     Click Element    ${foodBtn}
 
 Food Category has to be selected
-    Sleep    10s
+    Wait Until Element Is Visible    ${removeCatBtn}
     Element Should Be Visible    ${removeCatBtn}
 
 Tap Done button after select category
-    Sleep    10s
     Wait Until Element Is Visible    ${doneBtn}
     Click Element    ${doneBtn}
 
 Tap Create button
     Wait Until Element Is Visible    ${createCommuBtn}
     Click Element    ${createCommuBtn}
+    Sleep    5s
 
+Should Show Create Community success Message
+    Wait Until Element Is Visible    ${createCommuSuccessMsg}
+    Element Should Be Visible    ${createCommuSuccessMsg}
 
 
 

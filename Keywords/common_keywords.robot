@@ -4,23 +4,22 @@ Resource    ../Variables/common_variables.robot
 
 *** Keywords ***
 Open application FCA
-    Open Application    remote_url=${appiumServer}   platformName=${platformName}    appium:platformVersion=${platformVersion}    appium:deviceName=${deviceName}    appium:app=${appPath}    appium:appActivity=${appActivity}    appium:appPackage=${appPackage}    appium:noReset=false    appium:automationName=UiAutomator2   
+    Open Application    remote_url=${appiumServer}   platformName=${platformName}    appium:platformVersion=${platformVersion}    appium:deviceName=${deviceName}    appium:app=${appPath}    appium:appActivity=${appActivity}    appium:appPackage=${appPackage}    appium:noReset=false    appium:automationName=UiAutomator2   autoGrantPermissions=true
 
 Tap get start button
     Wait Until Element Is Visible    ${getStartBtn}
     Click Element    ${getStartBtn}
 
 Should show wellcome page
-    Sleep    10s
-    Element Should Be Visible    ${wellcome}
     Wait Until Element Is Visible    ${wellcome}
+    Element Should Be Visible    ${wellcome}
 
 Tap Sign in now
     Wait Until Element Is Visible    ${signInNow}
     Click Element    ${signInNow}
     
 Should show Sign in page
-    Sleep    3s
+    Wait Until Element Is Visible    ${signInBtn}
     Element Should Be Visible    ${signInBtn}
 
 Fill in email field with "${email}"
@@ -39,21 +38,21 @@ Tap Sign in button
     Click Element    ${signInBtn}
 
 Should show Wellcome to Fourgle Communities page
-    Sleep    10s
+    Wait Until Element Is Visible    ${wellcomeToFourglePage}
     Element Should Be Visible    ${wellcomeToFourglePage}
 
 Should Show Get started button
-    Sleep    5s
+    Wait Until Element Is Visible    ${getStartBtn}
     Element Should Be Visible    ${getStartBtn}
 
 Tap Continue as guest
     Wait Until Element Is Visible    ${continueAsGuest}
     Click Element    ${continueAsGuest}
-    Sleep    3s
     Element Should Be Visible    ${doNotShowAgainModal}
 
 Should show ad banner
-    Sleep    15s
+    Sleep    10s
+    Wait Until Element Is Visible    ${doNotShowAgainModal}
     Element Should Be Visible    ${doNotShowAgainModal}
 
 Tap Close banner
@@ -61,5 +60,5 @@ Tap Close banner
     Click Element    ${closeBanner}
 
 Should show main page
-    Sleep    10s
+    Wait Until Element Is Visible    ${contentSection}
     Element Should Be Visible        ${contentSection}
