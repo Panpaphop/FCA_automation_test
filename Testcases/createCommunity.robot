@@ -4,7 +4,8 @@ Resource    ../Keywords/common_keywords.robot
 Resource    ../Keywords/createCommunity_keywords.robot
 
 Suite Setup   Run Keywords
-...            Open application FCA
+...           Set Appium Timeout  30s
+...    AND    Open application FCA
 ...    AND    Tap get start button
 ...    AND    Should show wellcome page
 ...    AND    Tap Sign in now
@@ -32,3 +33,4 @@ Create Community
     Food Category has to be selected
     Tap Done button after select category
     Tap Create button
+    Should Show Create Community success Message
